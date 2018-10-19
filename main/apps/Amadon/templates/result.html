@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkout</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{%static  '/result.css' %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<h2>Thank you for your business</h2>
+	<p>We charged your credit card for {{request.session.item_total_price}}</p>
+	<p>You have ordered {{request.session.total_item}} items so far and spent ${{request.session.total}} with Amadon.com!</p>
+	<a href="/" class="btn btn-info">Go Back</a>
+</body>
+</html>

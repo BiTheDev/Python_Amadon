@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amadon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{%static  '/main.css' %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Amadon Store!</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qunatity</th>
+                <th scope="col">Action</th>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <form  action="/purchase/{{item.id}}" method="POST" class="form-group">
+                    {% csrf_token%}
+                    <tr>
+                        <th name = "name" value = "{{item.name}}">{{item.name}}</th>
+                        <th name = "price"value= "{{item.price}}">{{item.price}}</th>
+                        <th>
+                        <select class="custom-select" name= "amount">
+                            {% for num in range%}
+                            <option value="{{ num }}">{{num}}</option>
+                            {% endfor %}
+                        </select>
+                        </th>
+                        <th><button type="submit" class="btn btn-primary">Buy</button></th>
+                    </tr>
+                </form>
+                {% endfor %}
+            
+        </tbody>
+        </table>
+    
+</body>
+</html>
